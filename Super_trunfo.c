@@ -115,38 +115,104 @@ printf("Numero de pontos turisticos: %d\n", pontosTuristicos2);
 printf("Densidade populacional: %.2f\n", densi_popu2);
 printf("PIB per capita: %.2f\n", pibpc2);
 
-int resPopulacao =  (populacao1 > populacao2)  ; 
-int resArea = (area1 > area2);
-int resPIB = (pib1 > pib2);
-int resPontosturisticos = (pontosTuristicos1 > pontosTuristicos2);
-int resDensidade = (densi_popu1 < densi_popu2);
-int resPIBper = ( pibpc1 > pibpc2);
-int resSuperpoder = (superPoder1 > superPoder2);
+// int resPopulacao =  (populacao1 > populacao2)  ; 
+// int resArea = (area1 > area2);
+// int resPIB = (pib1 > pib2);
+// int resPontosturisticos = (pontosTuristicos1 > pontosTuristicos2);
+// int resDensidade = (densi_popu1 < densi_popu2);
+// int resPIBper = ( pibpc1 > pibpc2);
+// int resSuperpoder = (superPoder1 > superPoder2);
 
 //Comparação de cartas
 
-printf("\n\nComparacao de Cartas:\n\n");
+printf("\n -----Atributo Populacao-----\n");
+printf("\nCarta 1- %s : %d\n Carta2 - %s : %d",nomeCidade1, populacao1,nomeCidade2,populacao2);
+if (populacao1 > populacao2)
+{
+       printf("\nA Carta 1 venceu!\n");
+}else{
+       printf("\nA Carta 2 venceu!\n");
+}
 
-printf("Populacao: Carta %d venceu (%d)\n",
-       resPopulacao ? 1 : 2, resPopulacao);
+printf("\n -----Atributo Area-----\n");
+printf("\nCarta 1 - %s : %d\n Carta 2 - %s : %d",nomeCidade1,area1, nomeCidade2, area2);
+if (area1 > area2)
+{
+       printf("\nA Carta 1 venceu!\n");
+}else{
+       printf("\nA Carta 2 venceu!\n");
+}
 
-printf("Area: Carta %d venceu (%d)\n",
-       resArea ? 1 : 2, resArea);
+printf("\n -----Atributo PIB-----\n");
+printf("\nCarta 1 - %s : %d\n Carta2 - %s: %d",nomeCidade1,pib1,nomeCidade2, pib2);
+if (pib1 > pib2)
+{
+       printf("\nA Carta 1 venceu!\n");
+}else{
+       printf("\nA Carta 2 venceu!\n");
+}
 
-printf("PIB: Carta %d venceu (%d)\n",
-       resPIB ? 1 : 2, resPIB);
+printf("\n -----Atributo Pontos turisticos-----\n");
+printf("\nCarta 1 - %s : %d\n Carta2 - %s : %d", nomeCidade1,pontosTuristicos1,nomeCidade2, pontosTuristicos2,);
+if (pontosTuristicos1 > pontosTuristicos2)
+{
+       printf("\nA Carta 1 venceu!\n");
+}else{
+       printf("\nA Carta 2 venceu!\n");
+}
 
-printf("Pontos Turisticos: Carta %d venceu (%d)\n",
-       resPontosturisticos ? 1 : 2, resPontosturisticos);
+printf("\n -----Atributo Densidade populacional-----\n");
+printf("\nCarta 1 - %s : %d\n Carta2 - %s : %d",nomeCidade1,densi_popu1,nomeCidade2, densi_popu2);
+if (densi_popu1 < densi_popu2)
+{
+       printf("\nA Carta 1 venceu!\n");
+}else{
+       printf("\nA Carta 2 venceu!\n");
+}
 
-printf("Densidade Populacional: Carta %d venceu (%d)\n",
-       resDensidade ? 1 : 2, resDensidade);
+printf("\n -----Atributo PIB per capita-----\n");
+printf("\nCarta 1 - %s : %d\n Carta2 - %s : %d",nomeCidade1,pibpc1,nomeCidade2, pibpc2);
+if (pibpc1 > pibpc2)
+{
+       printf("\nA Carta 1 venceu!\n");
+}else{
+       printf("\nA Carta 2 venceu!\n");
+}
 
-printf("PIB per Capita: Carta %d venceu (%d)\n",
-       resPIBper ? 1 : 2, resPIBper);
+printf("\n -----Atributo Super Poder-----\n");
+printf("\nCarta 1 - %s : %d\n Carta2 - %s : %d",nomeCidade1,superPoder1,nomeCidade2, superPoder2);
+if (superPoder1 > superPoder2)
+{
+       printf("\nA Carta 1 venceu!\n");
+}else{
+       printf("\nA Carta 2 venceu!\n");
+}
 
-printf("Super Poder: Carta %d venceu (%d)\n",
-       resSuperpoder ? 1 : 2, resSuperpoder);
+
+
+
+// printf("\n\nComparacao de Cartas:\n\n");
+
+// printf("Populacao: Carta %d venceu (%d)\n",
+//        resPopulacao ? 1 : 2, resPopulacao);
+
+// printf("Area: Carta %d venceu (%d)\n",
+//        resArea ? 1 : 2, resArea);
+
+// printf("PIB: Carta %d venceu (%d)\n",
+//        resPIB ? 1 : 2, resPIB);
+
+// printf("Pontos Turisticos: Carta %d venceu (%d)\n",
+//        resPontosturisticos ? 1 : 2, resPontosturisticos);
+
+// printf("Densidade Populacional: Carta %d venceu (%d)\n",
+//        resDensidade ? 1 : 2, resDensidade);
+
+// printf("PIB per Capita: Carta %d venceu (%d)\n",
+//        resPIBper ? 1 : 2, resPIBper);
+
+// printf("Super Poder: Carta %d venceu (%d)\n",
+//        resSuperpoder ? 1 : 2, resSuperpoder);
 
 
     return 0;
