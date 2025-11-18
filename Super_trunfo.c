@@ -156,9 +156,9 @@ printf("\n -----Atributo Pontos turisticos-----\n");
 printf("\nCarta 1 - %s : %d\n Carta2 - %s : %d", nomeCidade1,pontosTuristicos1,nomeCidade2, pontosTuristicos2,);
 if (pontosTuristicos1 > pontosTuristicos2)
 {
-       printf("\nA Carta 1 venceu!\n");
-}else{
        printf("\nA Carta 2 venceu!\n");
+}else{
+       printf("\nA Carta 1 venceu!\n");
 }
 
 printf("\n -----Atributo Densidade populacional-----\n");
