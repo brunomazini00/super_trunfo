@@ -126,7 +126,7 @@ printf("PIB per capita: %.2f\n", pibpc2);
 //Comparação de cartas
 
 printf("\n -----Atributo Populacao-----\n");
-printf("\nCarta 1- %s : %d\n Carta2 - %s : %d",nomeCidade1, populacao1,nomeCidade2,populacao2);
+printf("\nCarta 1- %s : %lu\n Carta2 - %s : %lu",nomeCidade1, populacao1,nomeCidade2,populacao2);
 if (populacao1 > populacao2)
 {
        printf("\nA Carta 1 venceu!\n");
@@ -135,7 +135,7 @@ if (populacao1 > populacao2)
 }
 
 printf("\n -----Atributo Area-----\n");
-printf("\nCarta 1 - %s : %d\n Carta 2 - %s : %d",nomeCidade1,area1, nomeCidade2, area2);
+printf("\nCarta 1 - %s : %f\n Carta 2 - %s : %f",nomeCidade1,area1, nomeCidade2, area2);
 if (area1 > area2)
 {
        printf("\nA Carta 1 venceu!\n");
@@ -144,7 +144,7 @@ if (area1 > area2)
 }
 
 printf("\n -----Atributo PIB-----\n");
-printf("\nCarta 1 - %s : %d\n Carta2 - %s: %d",nomeCidade1,pib1,nomeCidade2, pib2);
+printf("\nCarta 1 - %s : %f\n Carta2 - %s: %f",nomeCidade1,pib1,nomeCidade2, pib2);
 if (pib1 > pib2)
 {
        printf("\nA Carta 1 venceu!\n");
@@ -153,7 +153,7 @@ if (pib1 > pib2)
 }
 
 printf("\n -----Atributo Pontos turisticos-----\n");
-printf("\nCarta 1 - %s : %d\n Carta2 - %s : %d", nomeCidade1,pontosTuristicos1,nomeCidade2, pontosTuristicos2,);
+printf("\nCarta 1 - %s : %d\n Carta2 - %s : %d", nomeCidade1,pontosTuristicos1,nomeCidade2, pontosTuristicos2);
 if (pontosTuristicos1 > pontosTuristicos2)
 {
        printf("\nA Carta 2 venceu!\n");
@@ -162,7 +162,7 @@ if (pontosTuristicos1 > pontosTuristicos2)
 }
 
 printf("\n -----Atributo Densidade populacional-----\n");
-printf("\nCarta 1 - %s : %d\n Carta2 - %s : %d",nomeCidade1,densi_popu1,nomeCidade2, densi_popu2);
+printf("\nCarta 1 - %s : %f\n Carta2 - %s : %f",nomeCidade1,densi_popu1,nomeCidade2, densi_popu2);
 if (densi_popu1 < densi_popu2)
 {
        printf("\nA Carta 1 venceu!\n");
@@ -171,7 +171,7 @@ if (densi_popu1 < densi_popu2)
 }
 
 printf("\n -----Atributo PIB per capita-----\n");
-printf("\nCarta 1 - %s : %d\n Carta2 - %s : %d",nomeCidade1,pibpc1,nomeCidade2, pibpc2);
+printf("\nCarta 1 - %s : %f\n Carta2 - %s : %f",nomeCidade1,pibpc1,nomeCidade2, pibpc2);
 if (pibpc1 > pibpc2)
 {
        printf("\nA Carta 1 venceu!\n");
@@ -180,7 +180,7 @@ if (pibpc1 > pibpc2)
 }
 
 printf("\n -----Atributo Super Poder-----\n");
-printf("\nCarta 1 - %s : %d\n Carta2 - %s : %d",nomeCidade1,superPoder1,nomeCidade2, superPoder2);
+printf("\nCarta 1 - %s : %f\n Carta2 - %s : %f",nomeCidade1,superPoder1,nomeCidade2, superPoder2);
 if (superPoder1 > superPoder2)
 {
        printf("\nA Carta 1 venceu!\n");
