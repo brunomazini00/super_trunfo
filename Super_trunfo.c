@@ -1,197 +1,210 @@
 /*
-  Super Trunfo de Cidades - Cadastro de Cartas
-  Autor: [Bruno Mazini de Almeida]
-  Data: [29/11/2025]
-  Descrição: Programa que cadastra e exibe duas cartas do jogo Super Trunfo com dados de cidades - Desafio: nível novato.
+Super Trunfo - Nível Mestre 
+  Autor: Bruno Mazini de Almeida
+  Data: 10/12/2025
 */
 
 #include <stdio.h>
-#include <string.h>
+#include <string.h> // Necessário para strcpy
 
-int main (){
+int main() {
+    
+    char estado1, estado2;
+    char codigo1[50], codigo2[50], nomeCidade1[50], nomeCidade2[50];
+    unsigned long int populacao1, populacao2;
+    float area1, pib1, densidade1, pibPerCapita1, area2, pib2, densidade2, pibPerCapita2;
+    int pontosTuristicos1, pontosTuristicos2;
 
-//Variáveis definidas para as duas cartas
-char estado1, estado2;
-char codigoCarta1 [50], codigoCarta2 [50];
-char nomeCidade1 [50], nomeCidade2 [50];
+    // Variáveis de Apoio
+    int opcao1, opcao2;
+    float valorJogo1_c1, valorJogo1_c2; 
+    float valorJogo2_c1, valorJogo2_c2; 
+    char nomeAtributo1[50], nomeAtributo2[50];
+    float soma1, soma2;
 
-unsigned long int populacao1, populacao2; 
-int pontosTuristicos1, pontosTuristicos2;
+    // --- Entrada carta 1 ---
+    printf("------ Carta 1 ------\n");
+    printf("Estado (A-H): ");
+    scanf(" %c", &estado1);
+    printf("Codigo: ");
+    scanf("%s", codigo1);
+    getchar(); 
+    printf("Nome da Cidade: ");
+    fgets(nomeCidade1, 50, stdin);
+    nomeCidade1[strcspn(nomeCidade1, "\n")] = 0; 
+    printf("Populacao: ");
+    scanf("%lu", &populacao1);
+    printf("Area: ");
+    scanf("%f", &area1);
+    printf("PIB: ");
+    scanf("%f", &pib1);
+    printf("Pontos Turisticos: ");
+    scanf("%d", &pontosTuristicos1);
 
-float area1, area2;
-float pib1, pib2;
-float densi_popu1, densi_popu2; //Densidade populacional - número de habitantes por quilômetro quadrado
-float pibpc1, pibpc2; //Pib per capita
-float superPoder1, superPoder2;
+    // Cálculos carta 1
+    densidade1 = (float)populacao1 / area1;
+    pibPerCapita1 = (pib1 * 1000000000) / (float)populacao1;
 
-int menu; 
+    // --- Entrada carta 2 ---
+    printf("\n------ Carta 2 ------\n");
+    printf("Estado (A-H): ");
+    scanf(" %c", &estado2);
+    printf("Codigo: ");
+    scanf("%s", codigo2);
+    getchar(); 
+    printf("Nome da Cidade: ");
+    fgets(nomeCidade2, 50, stdin);
+    nomeCidade2[strcspn(nomeCidade2, "\n")] = 0; 
+    printf("Populacao: ");
+    scanf("%lu", &populacao2);
+    printf("Area: ");
+    scanf("%f", &area2);
+    printf("PIB: ");
+    scanf("%f", &pib2);
+    printf("Pontos Turisticos: ");
+    scanf("%d", &pontosTuristicos2);
 
-//Leitura de dados da primeira carta
-printf("------ Insira os dados para primeira carta ------ \n");
-printf("Digite uma letra de (A a H) para representar o estado: ");
-scanf(" %c", &estado1);
+    // Cálculos carta 2
+    densidade2 = (float)populacao2 / area2;
+    pibPerCapita2 = (pib2 * 1000000000) / (float)populacao2;
 
-printf("Digite o codigo da carta: ");
-scanf("%s", codigoCarta1);
+    // --- Menu 1 ---
+    printf("\n=== Escolha o primeiro atributo ===\n");
+    printf("1. Populacao\n2. Area\n3. PIB\n4. Pontos Turisticos\n5. Densidade Demografica\n");
+    printf("Escolha entre 1 e 5 : ");
+    scanf("%d", &opcao1);
 
-getchar(); //limpar o buffer para receber fgets
+    switch(opcao1) {
+        case 1:
+            valorJogo1_c1 = (float)populacao1;
+            valorJogo1_c2 = (float)populacao2;
+            strcpy(nomeAtributo1, "Populacao");
+            break;
+        case 2:
+            valorJogo1_c1 = area1;
+            valorJogo1_c2 = area2;
+            strcpy(nomeAtributo1, "Area");
+            break;
+        case 3:
+            valorJogo1_c1 = pib1;
+            valorJogo1_c2 = pib2;
+            strcpy(nomeAtributo1, "PIB");
+            break;
+        case 4:
+            valorJogo1_c1 = (float)pontosTuristicos1;
+            valorJogo1_c2 = (float)pontosTuristicos2;
+            strcpy(nomeAtributo1, "Pontos Turisticos");
+            break;
+        case 5:
+            valorJogo1_c1 = densidade1;
+            valorJogo1_c2 = densidade2;
+            strcpy(nomeAtributo1, "Densidade Demografica");
+            break;
+        default:
+            printf("Opcao invalida! Usando Populacao.\n");
+            valorJogo1_c1 = (float)populacao1;
+            valorJogo1_c2 = (float)populacao2;
+            strcpy(nomeAtributo1, "Populacao");
+            opcao1 = 1;
+    }
 
-printf("Digite o nome da cidade: ");
-fgets(nomeCidade1, sizeof(nomeCidade1), stdin); //Possibilita o uso de strings com espaço 
+    // --- Menu 2 --- 
+    // Menu dinâmico visual (não mostra o que já foi escolhido)
+    printf("\n=== Escolha o segundo atributo ===\n");
+    if(opcao1 != 1) printf("1. Populacao\n");
+    if(opcao1 != 2) printf("2. Area\n");
+    if(opcao1 != 3) printf("3. PIB\n");
+    if(opcao1 != 4) printf("4. Pontos Turisticos\n");
+    if(opcao1 != 5) printf("5. Densidade Demografica\n");
+    
+    printf("Escolha entre 1 e 5 : ");
+    scanf("%d", &opcao2);
 
-nomeCidade1[strcspn(nomeCidade1,"\n")] = '\0'; //Remove a quebra de linha que o fgets gera
+    if(opcao1 == opcao2) {
+        printf("\nVocê escolheu o mesmo atributo (%s) duas vezes!\n", nomeAtributo1);
+        printf("Por favor, digite outro numero: ");
+        scanf("%d", &opcao2); // Lê a nova tentativa do usuário
 
-printf("Digite o numero da populacao da cidade: ");
-scanf("%lu", &populacao1);
+        // Verifica se ele errou de novo (encerra se errar)
+        if (opcao1 == opcao2) {
+            printf("Voce escolheu repetido novamente. O jogo sera encerrado.\n");
+            return 1;
+        }
+    }
+  
+    switch(opcao2) {
+        case 1:
+            valorJogo2_c1 = (float)populacao1;
+            valorJogo2_c2 = (float)populacao2;
+            strcpy(nomeAtributo2, "Populacao");
+            break;
+        case 2:
+            valorJogo2_c1 = area1;
+            valorJogo2_c2 = area2;
+            strcpy(nomeAtributo2, "Area");
+            break;
+        case 3:
+            valorJogo2_c1 = pib1;
+            valorJogo2_c2 = pib2;
+            strcpy(nomeAtributo2, "PIB");
+            break;
+        case 4:
+            valorJogo2_c1 = (float)pontosTuristicos1;
+            valorJogo2_c2 = (float)pontosTuristicos2;
+            strcpy(nomeAtributo2, "Pontos Turisticos");
+            break;
+        case 5:
+            valorJogo2_c1 = densidade1;
+            valorJogo2_c2 = densidade2;
+            strcpy(nomeAtributo2, "Densidade Demografica");
+            break;
+        default:
+            printf("Opcao invalida!\n");
+            return 1;
+    }
 
-printf("Digite a area da cidade em quilometros quadrados: ");
-scanf("%f", &area1);
+    // --- Cálculo da Soma ---
+    
+    float p1_c1 = (opcao1 == 5) ? (1.0f / valorJogo1_c1) : valorJogo1_c1;
+    float p1_c2 = (opcao1 == 5) ? (1.0f / valorJogo1_c2) : valorJogo1_c2;
 
-printf("Digite o PIB da cidade (em bilhoes de reais): ");
-scanf("%f", &pib1);
+    float p2_c1 = (opcao2 == 5) ? (1.0f / valorJogo2_c1) : valorJogo2_c1;
+    float p2_c2 = (opcao2 == 5) ? (1.0f / valorJogo2_c2) : valorJogo2_c2;
 
-printf("Digite o numero de pontos turisticos: ");
-scanf("%d", &pontosTuristicos1);
-
-
-//Leitura de dados da segunda carta
-printf("\n------ Insira os dados para segunda carta ------ \n");
-printf("Digite uma letra de (A a H) para representar o estado: ");
-scanf(" %c", &estado2);
-
-printf("Digite o codigo da carta: ");
-scanf("%s", codigoCarta2);
-
-getchar(); //limpar o buffer para receber fgets
-
-printf("Digite o nome da cidade: ");
-fgets(nomeCidade2, sizeof(nomeCidade2), stdin); //Possibilita o uso de strings com espaço 
-
-nomeCidade2[strcspn(nomeCidade2,"\n")] = '\0'; //Remove a quebra de linha que o fgets gera
-
-printf("Digite o numero da populacao da cidade: ");
-scanf("%lu", &populacao2);
-
-printf("Digite a area da cidade em quilometros quadrados: ");
-scanf("%f", &area2);
-
-printf("Digite o PIB da cidade (em bilhoes de reais): ");
-scanf("%f", &pib2);
-
-printf("Digite o numero de pontos turisticos: ");
-scanf("%d", &pontosTuristicos2);
-
-densi_popu1 = (float) populacao1 / area1;
-densi_popu2 = (float) populacao2 / area2;
-
-pibpc1 = (pib1 * 1000000000) / (float) populacao1;
-pibpc2 = (pib2 * 1000000000) / (float) populacao2;
-
-superPoder1 = (float) populacao1 + area1 + pib1 + (float) pontosTuristicos1 + pibpc1 + (1/ densi_popu1);
-superPoder2 = (float) populacao2 + area2 + pib2 + (float) pontosTuristicos2 + pibpc2 + (1/ densi_popu2);
-
-//Exibindo dados da primeira carta 
-printf("------- Resultados da primeira carta -------\n");
-printf("Carta 1:\n");
-printf("Estado: %c\n", estado1);
-printf("Codigo: %s\n", codigoCarta1);
-printf("Nome da Cidade: %s\n", nomeCidade1);
-printf("Populacao: %lu\n", populacao1);
-printf("Area: %.2f quilometros quadrados\n", area1);
-printf("PIB: %.2f bilhoes de reais\n", pib1);
-printf("Numero de pontos turisticos: %d\n", pontosTuristicos1);
-printf("Densidade populacional: %.2f\n", densi_popu1);
-printf("PIB per capita: %.2f\n", pibpc1);
-
-
-//Exibindo dados da segunda carta 
-printf("\n------- Resultados da segunda carta -------\n");
-printf("Carta 2:\n");
-printf("Estado: %c\n", estado2);
-printf("Codigo: %s\n", codigoCarta2);
-printf("Nome da Cidade: %s\n", nomeCidade2);
-printf("Populacao: %lu\n", populacao2);
-printf("Area: %.2f quilometros quadrados\n", area2);
-printf("PIB: %.2f bilhoes de reais\n", pib2);
-printf("Numero de pontos turisticos: %d\n", pontosTuristicos2);
-printf("Densidade populacional: %.2f\n", densi_popu2);
-printf("PIB per capita: %.2f\n", pibpc2);
+    soma1 = p1_c1 + p2_c1;
+    soma2 = p1_c2 + p2_c2;
 
 
-//Menu Interativo 
+    printf("\n================ RESULTADOS ================\n");
+    printf("%s vs %s\n\n", nomeCidade1, nomeCidade2);
 
-printf("\nBatalha das cartas - Escolha o seu atributo para batalha:\n");
-printf("1 - População\n");
-printf("2 - Área\n");
-printf("3 - PIB\n");
-printf("4 - Pontos turísticos\n");
-printf("5 - Densidade demografica\n");
-printf("----- Escolha um numero entre 1 e 5 ----- :");
-scanf("%d", &menu);
+    // Atributo 1
+    printf("1. %s:\n", nomeAtributo1);
+    printf("   %s: %.2f\n", nomeCidade1, valorJogo1_c1);
+    printf("   %s: %.2f\n", nomeCidade2, valorJogo1_c2);
+    
+    int venceu1 = (opcao1 == 5) ? (valorJogo1_c1 < valorJogo1_c2) : (valorJogo1_c1 > valorJogo1_c2);
+    printf("   -> Venceu: %s\n\n", venceu1 ? nomeCidade1 : nomeCidade2);
 
-//Switch para comparação das cartas
+    // Atributo 2
+    printf("2. %s:\n", nomeAtributo2);
+    printf("   %s: %.2f\n", nomeCidade1, valorJogo2_c1);
+    printf("   %s: %.2f\n", nomeCidade2, valorJogo2_c2);
+    
+    int venceu2 = (opcao2 == 5) ? (valorJogo2_c1 < valorJogo2_c2) : (valorJogo2_c1 > valorJogo2_c2);
+    printf("   -> Venceu: %s\n\n", venceu2 ? nomeCidade1 : nomeCidade2);
 
-switch (menu)
-{
-case 1:
-     printf("Atributo = População\n");
-     if (populacao1>populacao2)
-     {
-       printf("A carta 1 (%s - número da população: %lu ) Venceu!\n",nomeCidade1,populacao1);
-     }else if (populacao2>populacao1){
-       printf("A carta 2 (%s - número da população: %lu ) Venceu!\n",nomeCidade2,populacao2);
-     }else{
-       printf("Empate!\n");
-     }
-       break;
-case 2:
-     printf("Atributo = Área\n");
-     if (area1>area2)
-     {
-       printf("A carta 1 (%s - Área: %.2f ) Venceu!\n",nomeCidade1,area1);
-     }else if (area2>area1){
-       printf("A carta 2 (%s - Área: %.2f ) Venceu!\n",nomeCidade2,area2);
-     }else{
-       printf("Empate!\n");
-     }
-       break;
-case 3:
-     printf("Atributo = PIB\n");
-     if (pib1>pib2)
-     {
-       printf("A carta 1 (%s - PIB: %.2f ) Venceu!\n",nomeCidade1,pib1);
-     }else if (pib2>pib1){
-       printf("A carta 2 (%s - PIB: %.2f ) Venceu!\n",nomeCidade2,pib2);
-     }else{
-       printf("Empate!\n");
-     }
-       break;
-case 4:
-     printf("Atributo = Número de pontos turísticos\n");
-     if (pontosTuristicos1>pontosTuristicos2)
-     {
-       printf("A carta 1 (%s - Número de pontos turísticos: %d ) Venceu!\n",nomeCidade1,pontosTuristicos1);
-     }else if (pontosTuristicos2>pontosTuristicos1){
-       printf("A carta 2 (%s - Número de pontos turísticos: %d ) Venceu!\n",nomeCidade2,pontosTuristicos2);
-     }else{
-       printf("Empate!\n");
-     }
-       break;
-case 5:
-     printf("Atributo = Densidade demográfica\n");
-     if (densi_popu1 < densi_popu2)
-     {
-       printf("A carta 1 (%s - Densidade demográfica: %.2f ) Venceu!\n",nomeCidade1,densi_popu1);
-     }else if (densi_popu2 < densi_popu1){
-       printf("A carta 2 (%s - Densidade demográfica: %.2f ) Venceu!\n",nomeCidade2,densi_popu2);
-     }else{
-       printf("Empate!\n");
-     }
-       break;
-default:
-       printf("Opção invalida!\n");
-       break;
-}
+    // Soma Final
+    printf("--------------------------------------------\n");
+    printf("Soma dos atributos:\n");
+    printf("%s: %.2f\n", nomeCidade1, soma1);
+    printf("%s: %.2f\n", nomeCidade2, soma2);
 
-   return 0;
+    if(soma1 == soma2) {
+        printf("\nResultado final: Empate!\n");
+    } else {
+        printf("\nResultado final: %s Venceu!\n", (soma1 > soma2) ? nomeCidade1 : nomeCidade2);
+    }
+
+    return 0;
 }
